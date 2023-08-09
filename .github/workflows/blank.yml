@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Publish SNS Topic
-        uses: nothingalike/sns-publish-topic@v1.6
+        uses: nothingalike/sns-publish-topic@v1.7
         with:
           MESSAGE: "{\"type\": \"RepositoryFullUpdateJob\", \"repository\": \"vnderror\"}"
           TOPIC_ARN: "arn:aws:sns:eu-west-1:442864304639:GitPushEvents.fifo"
