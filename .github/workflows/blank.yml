@@ -1,40 +1,12 @@
-- name: DynamoDB Actions
-  uses: mooyoul/dynamodb-actions@v1.2.1
+- name: AWS SNS - Publish Topic
+  uses: nothingalike/sns-publish-topic@v1.7
 
-on:
-  # Triggers the workflow on push or pull request events but only for the "master" branch
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-jobs:
-  job:
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Get uuid
-        id: uuid
-        run: | 
-            echo "::set-output name=uuid::$(uuidgen)"
-      - name: Put DynamoDB Item
-        uses: mooyoul/dynamodb-actions@v1.2.1
-        env:
-          AWS_DEFAULT_REGION: eu-west-1
-          AWS_REGION: eu-west-1
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        with:
-          operation: put
-          region: eu-west-1
-          table: git-log
-          item: |
-            { 
-              id: 1,
-              repository: test
-            }
+- name: Publish SNS Topic
+  uses: nothingalike/sns-publish-topic@v1.6
+  with:
+    MESSAGE: "message"
+    TOPIC_ARN: "arn:aws:sns:[your region]:[your account id]:[your topic name]"
+  env:
+    AWS_REGION: ${{ secrets.AWS_REGION }}
+    AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+    AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
