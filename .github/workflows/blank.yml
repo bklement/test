@@ -10,8 +10,8 @@ jobs:
         with:
           MESSAGE: "{\"type\": \"RepositoryFullUpdateJob\", \"repository\": \"vnderror\"}"
           TOPIC_ARN: "arn:aws:sns:eu-west-1:442864304639:GitPushEvents.fifo"
-      env:
-        AWS_REGION: eu-west-1
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        env:
+          AWS_REGION: eu-west-1
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
      
