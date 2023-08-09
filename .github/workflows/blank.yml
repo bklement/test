@@ -8,7 +8,7 @@ jobs:
       - name: Publish SNS Topic
         uses: nothingalike/sns-publish-topic@v1.7
         with:
-          MESSAGE: "{\"type\": \"RepositoryFullUpdateJob\", \"repository\": \"vnderror\"}"
+          MESSAGE: "MUKODJ"
           TOPIC_ARN: "arn:aws:sns:eu-west-1:442864304639:GitPushEvents.fifo"
         env:
           AWS_REGION: eu-west-1
